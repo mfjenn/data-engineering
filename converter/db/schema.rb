@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120919192640) do
+ActiveRecord::Schema.define(:version => 20120919200458) do
 
   create_table "inputs", :force => true do |t|
     t.string   "purchaser_name"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(:version => 20120919192640) do
     t.integer  "purchase_count"
     t.string   "merchant_address"
     t.string   "merchant_name"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password"
+    t.string   "confirm_password"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
