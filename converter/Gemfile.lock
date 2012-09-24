@@ -154,7 +154,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (= 2.0.0)
+  bcrypt-ruby
+  bootstrap-sass
   carrierwave
   coffee-rails (~> 3.2.1)
   csv-mapper

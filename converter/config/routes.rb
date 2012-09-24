@@ -1,4 +1,6 @@
 Converter::Application.routes.draw do
+  get "users/new"
+
   resources :inputs
 
   # The priority is based upon order of creation:

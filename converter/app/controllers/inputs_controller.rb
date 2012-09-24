@@ -1,6 +1,9 @@
 class InputsController < ApplicationController
   # GET /inputs
   # GET /inputs.json
+
+   require 'csv'    
+ 
   def index
     @inputs = Input.all
 
@@ -25,7 +28,6 @@ class InputsController < ApplicationController
   # GET /inputs/new.json
   def new
     @input = Input.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @input }
@@ -41,10 +43,14 @@ class InputsController < ApplicationController
   # POST /inputs.json
   def create
     @input = Input.new(params[:input])
+    
+    CSV.foreach(inputs_path, :headers => true) do |row|
+     Input.create!(row.to_hash)
+    end
 
     respond_to do |format|
       if @input.save
-        format.html { redirect_to @input, notice: 'Input was successfully created.' }
+        format.html { redirect_to @input, notice: 'File Was Successfully Uploaded.' }
         format.json { render json: @input, status: :created, location: @input }
       else
         format.html { render action: "new" }
